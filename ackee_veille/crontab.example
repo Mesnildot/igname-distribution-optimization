@@ -1,0 +1,20 @@
+# Exemple de configuration crontab pour la veille Ackee
+#
+# Pour installer cette configuration :
+# 1. Éditez les chemins ci-dessous
+# 2. Ajoutez la ligne à votre crontab : crontab -e
+# 3. Sauvegardez et quittez
+
+# Exécute la veille tous les lundis à 08:00
+# Format: minute heure jour mois jour_de_semaine commande
+# jour_de_semaine: 0 = dimanche, 1 = lundi, etc.
+
+# VEILLE AUTOMATIQUE - Tous les lundis à 08:00
+0 8 * * 1 cd /path/to/ackee_veille && /path/to/ackee_veille/venv/bin/python veille_orchestrator.py >> /path/to/ackee_veille/logs/cron.log 2>&1
+
+# Alternative: Utiliser le scheduler Python (recommandé)
+# Cette commande démarre le scheduler qui s'occupe de l'exécution
+@reboot cd /path/to/ackee_veille && /path/to/ackee_veille/venv/bin/python scheduler.py >> /path/to/ackee_veille/logs/scheduler.log 2>&1
+
+# IMPORTANT: Remplacez "/path/to/ackee_veille" par le chemin absolu réel
+# Exemple: /home/user/ackee_veille

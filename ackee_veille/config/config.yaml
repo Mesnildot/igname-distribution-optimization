@@ -1,0 +1,171 @@
+# Configuration Ackee Veille Automatisée
+
+# Contexte Ackee
+ackee:
+  name: "Ackee Financial Services"
+  description: "Plateforme blockchain de transferts d'argent pour la diaspora africaine"
+  corridors: ["France→Togo", "France→Bénin", "France→Côte d'Ivoire", "UK→UEMOA", "EU→UEMOA"]
+  fees: "0.5%"
+  stage: "Développement produit"
+  co_founders: 13
+
+# Recipients email
+recipients:
+  - bawenaoa@gmail.com
+  - sbassila@gmail.com
+  - manrachid@gmail.com
+  - stonedesouza@gmail.com
+  - cheikhsarr02@gmail.com
+  - armelbokam@gmail.com
+  - samkotto@yahoo.fr
+  - mocktarsangbana@gmail.com
+  - dakgardiennage@yahoo.fr
+  - jacques.tobo@adec-ci.com
+  - marctraore@catek-uemoa.com
+  - ftokpanou@gmail.com
+  - b329consulting@gmail.com
+
+# Sources de veille
+sources:
+  # Médias tech
+  media:
+    - name: "TechCrunch"
+      url: "https://techcrunch.com"
+      rss: "https://techcrunch.com/feed/"
+      keywords: ["fintech", "remittance", "cross-border", "africa", "blockchain"]
+
+    - name: "The Block"
+      url: "https://www.theblock.co"
+      rss: "https://www.theblock.co/rss.xml"
+      keywords: ["stablecoin", "USDC", "payments", "africa"]
+
+    - name: "TechCabal"
+      url: "https://techcabal.com"
+      rss: "https://techcabal.com/feed/"
+      keywords: ["fintech", "payments", "mobile money"]
+
+    - name: "Briter Bridges"
+      url: "https://briterbridges.com"
+      type: "newsletter"
+      keywords: ["funding", "startups", "africa"]
+
+    - name: "The Big Deal"
+      url: "https://bigdeal.substack.com"
+      type: "newsletter"
+      keywords: ["funding", "africa", "fintech"]
+
+  # Données structurées
+  data_platforms:
+    - name: "Crunchbase"
+      api_url: "https://api.crunchbase.com/api/v4"
+      requires_key: true
+      searches:
+        - query: "fintech remittance africa"
+        - query: "cross-border payments"
+
+    - name: "Product Hunt"
+      api_url: "https://api.producthunt.com/v2/api/graphql"
+      requires_key: true
+
+  # Régulateurs
+  regulators:
+    - name: "ACPR"
+      url: "https://acpr.banque-france.fr"
+      check_sections: ["Agréments", "Sanctions", "Actualités"]
+
+    - name: "FCA"
+      url: "https://www.fca.org.uk"
+      check_sections: ["Authorisations", "Regulatory sandbox"]
+
+    - name: "BCEAO"
+      url: "https://www.bceao.int"
+      check_sections: ["Réglementation", "Communiqués"]
+
+# Concurrents à tracker
+competitors:
+  direct:
+    - name: "Wise"
+      url: "https://wise.com"
+      crunchbase: "transferwise"
+      linkedin: "transferwise"
+
+    - name: "Remitly"
+      url: "https://remitly.com"
+      crunchbase: "remitly"
+      linkedin: "remitly"
+
+    - name: "WorldRemit"
+      url: "https://worldremit.com"
+      crunchbase: "worldremit"
+      linkedin: "worldremit"
+
+    - name: "Revolut"
+      url: "https://revolut.com"
+      crunchbase: "revolut"
+      linkedin: "revolut"
+
+    - name: "Wave"
+      url: "https://wave.com"
+      crunchbase: "wave-6e15"
+      linkedin: "wave-mobile-money"
+
+    - name: "Djamo"
+      url: "https://djamo.io"
+      linkedin: "djamo"
+
+    - name: "Lemfi"
+      url: "https://lemfi.com"
+      crunchbase: "lemfi"
+      linkedin: "lemfi"
+
+    - name: "Chipper Cash"
+      url: "https://chippercash.com"
+      crunchbase: "chipper"
+      linkedin: "chipper-cash"
+
+  ecosystem:
+    baas:
+      - "Treezor"
+      - "Swan"
+      - "Solarisbank"
+      - "Railsbank"
+      - "Mangopay"
+
+    mobile_money:
+      - "MTN Mobile Money"
+      - "Orange Money"
+      - "Moov Africa"
+      - "Airtel Money"
+
+    blockchain:
+      - "Circle"
+      - "Stellar"
+      - "Celo"
+      - "Monerium"
+
+# API Keys (à renseigner dans .env)
+api_keys:
+  anthropic_api_key: ${ANTHROPIC_API_KEY}
+  crunchbase_api_key: ${CRUNCHBASE_API_KEY}
+  producthunt_api_key: ${PRODUCTHUNT_API_KEY}
+  serper_api_key: ${SERPER_API_KEY}  # Pour recherche Google
+
+# Scheduler
+schedule:
+  frequency: "weekly"
+  day: "monday"
+  time: "08:00"
+  timezone: "Europe/Paris"
+
+# LLM Configuration
+llm:
+  provider: "anthropic"
+  model: "claude-sonnet-4-5-20250929"
+  max_tokens: 8000
+  temperature: 0.3
+
+# Output
+output:
+  reports_dir: "reports"
+  format: ["markdown", "eml"]
+  language: "fr"

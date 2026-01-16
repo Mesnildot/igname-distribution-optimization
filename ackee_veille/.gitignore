@@ -1,0 +1,42 @@
+# Environment
+venv/
+env/
+ENV/
+.venv
+
+# Environment variables (IMPORTANT: never commit API keys)
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Reports and data (contient potentiellement des infos sensibles)
+reports/
+data/
+logs/
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.bak
+*.backup
+
+# Distribution
+dist/
+build/
+*.egg-info/

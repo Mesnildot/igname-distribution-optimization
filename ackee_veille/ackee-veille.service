@@ -1,0 +1,17 @@
+[Unit]
+Description=Ackee Veille Automatisée - Weekly Intelligence Service
+After=network.target
+
+[Service]
+Type=simple
+User=your-username
+WorkingDirectory=/path/to/ackee_veille
+Environment="PATH=/path/to/ackee_veille/venv/bin"
+ExecStart=/path/to/ackee_veille/venv/bin/python /path/to/ackee_veille/scheduler.py
+Restart=always
+RestartSec=60
+StandardOutput=append:/path/to/ackee_veille/logs/scheduler.log
+StandardError=append:/path/to/ackee_veille/logs/scheduler_error.log
+
+[Install]
+WantedBy=multi-user.target
